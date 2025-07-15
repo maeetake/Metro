@@ -99,25 +99,25 @@ python build_station_school_kml.py
 ## 各ファイルの概要まとめ
 
 *   `get_station_loc.py`:
-    *   `駅名.txt` から駅名リストを読み込み，Overpass APIを介して緯度・経度を取得し，CSVとして保存します．
+    *   `駅名.txt` から駅名リストを読み込み，Overpass APIを介して緯度・経度を取得し，CSVとして保存する．
 
 *   `find_schools_within_radius.py`:
-    *   駅の座標リストを基に，周辺（デフォルト半径800m）にある中学校・高等学校を検索します．
-    *   `--live` オプション（デフォルト）では，Overpass APIにリアルタイムで問い合わせを行います．
-    *   `is_target_name()` 関数で，施設名に「中学校」または「高等学校」が含まれるかを判定しています．
+    *   駅の座標リストを基に，周辺（デフォルト半径800m）にある中学校・高等学校を検索する．
+    *   `--live` オプション（デフォルト）では，Overpass APIにリアルタイムで問い合わせを行う．
+    *   `is_target_name()` 関数で，施設名に「中学校」または「高等学校」が含まれるかを判定する．
 
 *   `build_station_school_kml.py`:
-    *   `simplekml` ライブラリを使用し，駅，検索範囲の円，範囲内の学校の位置情報を含んだKMLファイルを生成します．
-    *   アイコンのスタイルや円の透過度などを設定し，視覚的に分かりやすい地図を作成します．
+    *   `simplekml` ライブラリを使用し，駅，検索範囲の円，範囲内の学校の位置情報を含んだKMLファイルを生成する．
+    *   アイコンのスタイルや円の透過度などを設定し，視覚的に分かりやすい地図を作成する．
 
 *   `駅名.txt`:
     *   座標を検索したい駅名を記述する入力ファイル．
 
 *   `station_coordinates_157.csv`:
-    *   `get_station_loc.py` の出力．駅名と緯度・経度が含まれます．
+    *   `get_station_loc.py` の出力．駅名と緯度・経度が含まれる．
 
 *   `schools_within_800m.csv`:
-    *   `find_schools_within_radius.py` の出力．駅名，学校名，駅からの距離，学校の緯度・経度が含まれます．
+    *   `find_schools_within_radius.py` の出力．駅名，学校名，駅からの距離，学校の緯度・経度が含まれる．
 
 *   `results.kml` / `stations_schools_800m.kml`:
     *   `build_station_school_kml.py` の出力．Google Earthなどで表示可能な最終成果物．
