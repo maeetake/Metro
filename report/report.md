@@ -40,7 +40,7 @@
 ([作成した地図](https://www.google.com/maps/d/u/0/edit?mid=1UEvoCmc3yi266YoiA26KYFB-uygS20M&usp=sharing))
 
 
-作成したデータを利用して，授業開始日を推定した．
+作成したデータを利用して，周辺に学校が存在する駅のみを抽出し，その駅だけを分析することで授業開始日を推定した．
 - **`school_celemony_prediction.py`**:乗降客データと学校の立地情報（最寄り駅）を基に，授業開始日の可能性が高い日付を推測.（詳細は\analyze_school\README.md）
 
 
