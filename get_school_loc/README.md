@@ -62,8 +62,7 @@
     ```bash
     python find_schools_within_radius.py
     ```
-
-    このスクリプトは，`station_coordinates_157.csv` を読み込み，各駅の半径800m以内にある中学校・高等学校・大学を検索する．検索はデフォルトでOverpass APIをリアルタイムで利用する（`--live` モード）．
+このスクリプトは，`station_coordinates_157.csv` を読み込み，各駅の半径800m以内にある中学校・高等学校・大学を検索する．検索はデフォルトでOverpass APIをリアルタイムで利用する（`--live` モード）．
 
 *   **主なオプション:**
     *   `-s, --stations`: 駅座標が記載されたCSVファイルを指定する．（デフォルト: `station_coordinates_157.csv`）
