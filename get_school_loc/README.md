@@ -58,7 +58,6 @@
 ### Step 2: 駅周辺の学校を検索する
 
 次に，Step 1で取得した駅の座標を基に，周辺の学校を検索する．
-
     ```bash
     python find_schools_within_radius.py
     ```
