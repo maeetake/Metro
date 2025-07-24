@@ -89,14 +89,24 @@ def main() -> None:
 
     # スタイルの事前定義
     # ★駅のピンを見やすいアイコンに変更
-    station_style = simplekml.Style()
-    station_style.iconstyle.icon.href = 'http://maps.google.com/mapfiles/kml/paddle/red-circle.png'
-    station_style.iconstyle.scale = 1.2 # アイコンサイズを少し大きくする
+    # station_style = simplekml.Style()
+    # station_style.iconstyle.icon.href = 'http://maps.google.com/mapfiles/kml/paddle/red-circle.png'
+    # station_style.iconstyle.scale = 1.2 # アイコンサイズを少し大きくする
 
-    # ★学校用のピンのスタイルを定義
+    # # ★学校用のピンのスタイルを定義
+    # school_style = simplekml.Style()
+    # school_style.iconstyle.icon.href = 'http://maps.google.com/mapfiles/kml/paddle/ylw-blank.png'
+    # school_style.iconstyle.scale = 0.8 # アイコンサイズを少し小さくする
+
+    # 駅のピンを「赤い点」に
+    station_style = simplekml.Style()
+    station_style.iconstyle.icon.href = 'https://maps.google.com/mapfiles/kml/paddle/blu-circle-lv.png'
+    station_style.iconstyle.scale = 0.1
+
+    # 学校のピンを「青い点」に
     school_style = simplekml.Style()
-    school_style.iconstyle.icon.href = 'http://maps.google.com/mapfiles/kml/paddle/ylw-blank.png'
-    school_style.iconstyle.scale = 0.8 # アイコンサイズを少し小さくする
+    school_style.iconstyle.icon.href = 'https://maps.google.com/mapfiles/kml/paddle/red-circle-lv.png'
+    school_style.iconstyle.scale = 0.1
 
     poly_style = simplekml.Style()
     poly_style.polystyle.color = simplekml.Color.changealphaint(60, simplekml.Color.blue)
