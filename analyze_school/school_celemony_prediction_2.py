@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 
 import jpholiday
 import japanize_matplotlib
+import matplotlib.ticker as mticker
 
 FALLBACK_ENCODINGS: List[str] = [
     "utf-8",
@@ -128,14 +129,15 @@ def save_bar_chart(preds: pd.DataFrame, out_path: Path, all_dates: pd.DatetimeIn
     # 全日程分に0埋め
     all_counts = pd.Series(0, index=all_dates)
     all_counts.update(counts)
-    plt.figure(figsize=(max(8, len(all_dates) * 0.28), 4))
-    plt.bar(all_counts.index.astype(str), all_counts.values)
-    plt.title("Predicted ceremony dates – station count")
-    plt.ylabel("Stations")
+    fig, ax = plt.subplots(figsize=(max(8, len(all_dates) * 0.28), 4))
+    ax.bar(all_counts.index.astype(str), all_counts.values)
+    ax.set_title("Predicted ceremony dates – station count")
+    ax.set_ylabel("# Stations")
+    ax.yaxis.set_major_locator(mticker.MaxNLocator(integer=True))
     plt.xticks(rotation=45, ha="right")
     plt.tight_layout()
     plt.savefig(out_path)
-    plt.close()
+    plt.close(fig)
     print(f"Saved: {out_path}")
 
 def save_station_timeline(g: pd.DataFrame, date: pd.Timestamp, out_path: Path, *, window: int):
