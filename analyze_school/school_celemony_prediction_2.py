@@ -82,20 +82,19 @@ def detect_start_date(
     df["baseline"] = df["departures"].rolling(window, min_periods=window).median()
     df["ratio"] = df["departures"] / df["baseline"]
 
-    # 1) strict spike
-    mask_spike = df["baseline"].ge(min_count) & df["ratio"].ge(multiplier)
-    if mask_spike.any():
-        return df.loc[mask_spike, "data_date"].iloc[0]
-
-    if not guarantee:
-        return pd.NaT
-
+    # Ratio is only valid where baseline is not NaN
     after_baseline = df[df["baseline"].notna()].copy()
+
     if not after_baseline.empty and after_baseline["ratio"].notna().any():
+        # Always find the date with the maximum ratio
         idx = after_baseline["ratio"].idxmax()
         return df.loc[idx, "data_date"]
-
-    return _fallback_date(df)
+    
+    # Fallback if no valid ratio can be calculated
+    if guarantee:
+        return _fallback_date(df)
+    
+    return pd.NaT
 
 def predict_ceremony_dates(
     daily: pd.DataFrame,
@@ -132,7 +131,7 @@ def save_bar_chart(preds: pd.DataFrame, out_path: Path, all_dates: pd.DatetimeIn
     plt.figure(figsize=(max(8, len(all_dates) * 0.28), 4))
     plt.bar(all_counts.index.astype(str), all_counts.values)
     plt.title("Predicted ceremony dates – station count")
-    plt.ylabel("# Stations")
+    plt.ylabel("Stations")
     plt.xticks(rotation=45, ha="right")
     plt.tight_layout()
     plt.savefig(out_path)
